@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Browser History</title>
+</head>
+<body>
+
+    <h2>Browser History Navigation</h2>
+
+    <p>Current History Length: <span id="historyLength"></span></p>
+
+    <button onclick="goBack()">Previous Page</button>
+    <button onclick="goForward()">Next Page</button>
+    <button onclick="goPages()">Go 2 Pages Back</button>
+
+    <script>
+        document.getElementById("historyLength").innerHTML = history.length;
+
+        function goBack() {
+            history.back();
+        }
+
+        function goForward() {
+            history.forward();
+        }
+
+        function goPages() {
+            history.go(-2);
+        }
+    </script>
+
+</body>
+</html>

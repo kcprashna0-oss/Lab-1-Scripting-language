@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Browser Window Control</title>
+</head>
+<body>
+
+    <h2>Browser Window Control</h2>
+
+    <button onclick="openWindow()">Open New Window</button>
+    <button onclick="closeWindow()">Close Window</button>
+    <button onclick="resizeWindow()">Resize Window</button>
+
+    <h3>Browser Window Properties</h3>
+
+    <p>Inner Width: <span id="innerWidth"></span> px</p>
+    <p>Inner Height: <span id="innerHeight"></span> px</p>
+    <p>Outer Width: <span id="outerWidth"></span> px</p>
+    <p>Outer Height: <span id="outerHeight"></span> px</p>
+
+    <script>
+        let newWindow;
+
+        function openWindow() {
+            newWindow = window.open("", "", "width=500,height=400");
+            newWindow.document.write("<h2>New Browser Window</h2>");
+            newWindow.document.write("<p>This window was opened using window.open().</p>");
+        }
+
+        function closeWindow() {
+            if (newWindow) {
+                newWindow.close();
+            }
+        }
+
+        function resizeWindow() {
+            if (newWindow) {
+                newWindow.resizeTo(800, 600);
+            }
+        }
+
+        document.getElementById("innerWidth").innerHTML = window.innerWidth;
+        document.getElementById("innerHeight").innerHTML = window.innerHeight;
+        document.getElementById("outerWidth").innerHTML = window.outerWidth;
+        document.getElementById("outerHeight").innerHTML = window.outerHeight;
+    </script>
+
+</body>
+</html>

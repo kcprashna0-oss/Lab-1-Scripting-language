@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Challenge</title>
+
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 5px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <h1>JS Challenge</h1>
+        <h2>7 Days of JS Challenge</h2>
+
+        <h3 id="year"></h3>
+        <p id="dateTime"></p>
+
+        <ul>
+            <li>Python Challenge Done</li>
+            <li>JavaScript Challenge Ongoing</li>
+            <li>React Challenge Coming</li>
+            <li>Full Stack Challenge Coming</li>
+            <li>Data Analysis Challenge Coming</li>
+            <li>React Native Challenge Coming</li>
+            <li>Machine Learning Challenge Coming</li>
+        </ul>
+    </div>
+
+    <script>
+
+        let year = document.querySelector("#year");
+        let dateTime = document.querySelector("#dateTime");
+        let challenges = document.querySelectorAll("li");
+
+        year.textContent = new Date().getFullYear();
+
+        function changeYearColor() {
+            let colors = ["red", "blue", "green", "purple", "orange"];
+            let randomColor = colors[Math.floor(Math.random() * colors.length)];
+            year.style.color = randomColor;
+        }
+
+        function changeDateTime() {
+            let date = new Date();
+            dateTime.textContent = date.toLocaleString();
+
+            let colors = ["lightblue", "lightgreen", "lightyellow", "pink", "lightgray"];
+            let randomColor = colors[Math.floor(Math.random() * colors.length)];
+            dateTime.style.backgroundColor = randomColor;
+        }
+
+        challenges[0].style.backgroundColor = "green";
+        challenges[0].style.color = "white";
+
+        challenges[1].style.backgroundColor = "yellow";
+        challenges[1].style.color = "black";
+
+        for (let i = 2; i < challenges.length; i++) {
+            challenges[i].style.backgroundColor = "red";
+            challenges[i].style.color = "white";
+        }
+
+        setInterval(changeYearColor, 1000);
+        setInterval(changeDateTime, 1000);
+
+        changeDateTime();
+
+    </script>
+
+</body>
+</html>

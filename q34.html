@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Browser Object Model</title>
+</head>
+<body>
+
+    <h2>Browser Information</h2>
+
+    <p id="browserInfo"></p>
+
+    <button onclick="showInfo()">Show Browser Information</button>
+
+    <script>
+        function showInfo() {
+            document.getElementById("browserInfo").innerHTML =
+                "User Agent: " + navigator.userAgent +
+                "<br><br>" +
+                "Language: " + navigator.language +
+                "<br><br>" +
+                "Platform: " + navigator.platform +
+                "<br><br>" +
+                "Online Status: " + navigator.onLine;
+        }
+    </script>
+
+</body>
+</html>

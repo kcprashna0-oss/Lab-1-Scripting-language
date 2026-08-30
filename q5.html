@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Current Date</title>
+</head>
+<body>
+
+<script>
+let today = new Date();
+
+let day = today.getDate();
+let month = today.getMonth() + 1;
+let year = today.getFullYear();
+
+if (day < 10) {
+    day = "0" + day;
+}
+
+if (month < 10) {
+    month = "0" + month;
+}
+
+document.write("mm-dd-yyyy: " + month + "-" + day + "-" + year + "<br>");
+document.write("mm/dd/yyyy: " + month + "/" + day + "/" + year + "<br>");
+document.write("dd-mm-yyyy: " + day + "-" + month + "-" + year + "<br>");
+document.write("dd/mm/yyyy: " + day + "/" + month + "/" + year);
+</script>
+
+</body>
+</html>

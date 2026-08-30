@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Manipulation</title>
+</head>
+
+<body>
+
+    <h1>About Me</h1>
+
+    <p id="p1">My name is Prashna KC.</p>
+    <p id="p2">I am a BCA student.</p>
+    <p id="p3">I love to pet dogs.</p>
+    <p id="p4">I enjoy learning new things and improving my skills.</p>
+
+    <script>
+
+        let paragraph1 = document.querySelector("#p1");
+        let paragraph2 = document.querySelector("#p2");
+        let paragraph3 = document.querySelector("#p3");
+        let paragraph4 = document.querySelector("#p4");
+
+        let nodeList = document.querySelectorAll("p");
+
+        nodeList.forEach(function(paragraph) {
+            console.log(paragraph.textContent);
+        });
+
+        paragraph4.textContent = "Fourth Paragraph";
+
+        paragraph1.setAttribute("id", "first");
+        paragraph1.setAttribute("class", "paragraph");
+
+        paragraph2.setAttribute("id", "second");
+        paragraph2.setAttribute("class", "paragraph");
+
+        paragraph3.setAttribute("id", "third");
+        paragraph3.setAttribute("class", "paragraph");
+
+        paragraph4.setAttribute("id", "fourth");
+        paragraph4.setAttribute("class", "paragraph");
+
+        paragraph1.style.color = "blue";
+        paragraph1.style.backgroundColor = "lightyellow";
+        paragraph1.style.border = "2px solid blue";
+        paragraph1.style.fontSize = "20px";
+
+        paragraph2.style.color = "green";
+        paragraph2.style.backgroundColor = "lightgreen";
+        paragraph2.style.border = "2px solid green";
+        paragraph2.style.fontSize = "20px";
+
+        paragraph3.style.color = "purple";
+        paragraph3.style.backgroundColor = "lightblue";
+        paragraph3.style.border = "2px solid purple";
+        paragraph3.style.fontSize = "20px";
+
+        paragraph4.style.color = "red";
+        paragraph4.style.backgroundColor = "pink";
+        paragraph4.style.border = "2px solid red";
+        paragraph4.style.fontSize = "20px";
+
+        let paragraphs = document.querySelectorAll("p");
+
+        paragraphs.forEach(function(paragraph, index) {
+
+            if (index === 0 || index === 2) {
+                paragraph.style.color = "green";
+            }
+
+            if (index === 1 || index === 3) {
+                paragraph.style.color = "red";
+            }
+        });
+
+        paragraph1.textContent = "My name is Prashna KC.";
+        paragraph1.setAttribute("id", "first-paragraph");
+        paragraph1.setAttribute("class", "paragraph");
+
+        paragraph2.textContent = "I am a BCA student.";
+        paragraph2.setAttribute("id", "second-paragraph");
+        paragraph2.setAttribute("class", "paragraph");
+
+        paragraph3.textContent = "I love to pet dogs.";
+        paragraph3.setAttribute("id", "third-paragraph");
+        paragraph3.setAttribute("class", "paragraph");
+
+        paragraph4.textContent = "I enjoy learning new things and improving my skills.";
+        paragraph4.setAttribute("id", "fourth-paragraph");
+        paragraph4.setAttribute("class", "paragraph");
+
+    </script>
+
+</body>
+</html>

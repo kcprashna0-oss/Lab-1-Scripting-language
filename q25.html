@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Person Account</title>
+</head>
+<body>
+
+<script>
+let personAccount = {
+    firstName: "Anish",
+    lastName: "shrestha",
+    incomes: [
+        { amount: 20000, description: "Salary" },
+        { amount: 5000, description: "Bonus" }
+    ],
+    expenses: [
+        { amount: 3000, description: "Food" },
+        { amount: 2000, description: "Transport" }
+    ],
+
+    totalIncome: function() {
+        let total = 0;
+
+        for (let income of this.incomes) {
+            total += income.amount;
+        }
+
+        return total;
+    },
+
+    totalExpense: function() {
+        let total = 0;
+
+        for (let expense of this.expenses) {
+            total += expense.amount;
+        }
+
+        return total;
+    },
+
+    accountInfo: function() {
+        return this.firstName + " " + this.lastName;
+    },
+
+    addIncome: function(amount, description) {
+        this.incomes.push({
+            amount: amount,
+            description: description
+        });
+    },
+
+    addExpense: function(amount, description) {
+        this.expenses.push({
+            amount: amount,
+            description: description
+        });
+    },
+
+    accountBalance: function() {
+        return this.totalIncome() - this.totalExpense();
+    }
+};
+
+document.write("Account Holder: " + personAccount.accountInfo() + "<br>");
+document.write("Total Income: " + personAccount.totalIncome() + "<br>");
+document.write("Total Expense: " + personAccount.totalExpense() + "<br>");
+document.write("Account Balance: " + personAccount.accountBalance());
+</script>
+
+</body>
+</html>

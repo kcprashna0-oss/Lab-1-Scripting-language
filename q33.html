@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geographical Location</title>
+</head>
+<body>
+
+    <h2>Current Geographical Location</h2>
+
+    <button onclick="getLocation()">Get My Location</button>
+
+    <p id="message"></p>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                document.getElementById("message").innerHTML =
+                    "Requesting your location...";
+
+                navigator.geolocation.getCurrentPosition(
+                    showPosition,
+                    showError
+                );
+            } else {
+                document.getElementById("message").innerHTML =
+                    "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById("message").innerHTML =
+                "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+        }
+
+        function showError(error) {
+            if (error.code === error.PERMISSION_DENIED) {
+                document.getElementById("message").innerHTML =
+                    "Location access was denied by the user.";
+            } else if (error.code === error.POSITION_UNAVAILABLE) {
+                document.getElementById("message").innerHTML =
+                    "Location information is unavailable.";
+            } else if (error.code === error.TIMEOUT) {
+                document.getElementById("message").innerHTML =
+                    "The request to get your location timed out.";
+            } else {
+                document.getElementById("message").innerHTML =
+                    "An unknown error occurred.";
+            }
+        }
+    </script>
+
+</body>
+</html>  

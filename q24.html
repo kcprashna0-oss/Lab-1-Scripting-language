@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dog Object</title>
+</head>
+<body>
+
+<script>
+let dog = {};
+
+console.log(dog);
+dog.name = "Nani";
+dog.legs = 4;
+dog.color = "Brown";
+dog.age = 1;
+
+dog.bark = function() {
+    return "woof woof";
+};
+
+document.write("Name: " + dog.name + "<br>");
+document.write("Legs: " + dog.legs + "<br>");
+document.write("Color: " + dog.color + "<br>");
+document.write("Age: " + dog.age + "<br>");
+document.write("Bark: " + dog.bark() + "<br>");
+
+dog.breed = "Labrador";
+dog.getDogInfo = function() {
+    return this.name + " is a " + this.breed;
+};
+
+document.write("Breed: " + dog.breed + "<br>");
+document.write("Dog Info: " + dog.getDogInfo());
+</script>
+
+</body>
+</html>

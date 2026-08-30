@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>First Letter Uppercase</title>
+</head>
+<body>
+
+<script>
+function capitalizeWords(str) {
+    let words = str.split(" ");
+
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+    }
+
+    return words.join(" ");
+}
+
+let text = prompt("Enter a sentence:");
+let result = capitalizeWords(text);
+
+document.write("Original: " + text + "<br>");
+document.write("Result: " + result);
+</script>
+
+</body>
+</html>

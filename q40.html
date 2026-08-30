@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cookie Management</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 400px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Cookie Management</h2>
+
+    <h3>Set Cookie</h3>
+
+    <input type="text" id="key" placeholder="Enter Key">
+    <input type="text" id="value" placeholder="Enter Value">
+
+    <br>
+
+    <button onclick="setCookie()">Set Cookie</button>
+
+    <h3>Read Cookie</h3>
+
+    <input type="text" id="readKey" placeholder="Enter Key">
+
+    <button onclick="readCookie()">Read Cookie</button>
+
+    <p id="result"></p>
+
+    <h3>Delete Cookie</h3>
+
+    <input type="text" id="deleteKey" placeholder="Enter Key">
+
+    <button onclick="deleteCookie()">Delete Cookie</button>
+
+    <br><br>
+
+    <button onclick="displayCookies()">Display All Cookies</button>
+    <button onclick="deleteAllCookies()">Delete All Cookies</button>
+
+    <div id="cookieTable"></div>
+
+    <script>
+
+        function setCookie() {
+
+            let key = document.getElementById("key").value;
+            let value = document.getElementById("value").value;
+
+            document.cookie = key + "=" + value + ";path=/";
+
+            alert("Cookie saved successfully!");
+        }
+
+
+        function readCookie() {
+
+            let key = document.getElementById("readKey").value;
+
+            let cookies = document.cookie.split(";");
+
+            for (let cookie of cookies) {
+
+                let parts = cookie.trim().split("=");
+
+                if (parts[0] === key) {
+
+                    document.getElementById("result").innerHTML =
+                        "Value: " + parts[1];
+
+                    return;
+                }
+            }
+
+            document.getElementById("result").innerHTML =
+                "Cookie not found!";
+        }
+
+
+        function displayCookies() {
+
+            let cookies = document.cookie.split(";");
+
+            let table = "<table>";
+            table += "<tr><th>Key</th><th>Value</th></tr>";
+
+            for (let cookie of cookies) {
+
+                if (cookie.trim() === "") {
+                    continue;
+                }
+
+                let parts = cookie.trim().split("=");
+
+                table += "<tr>";
+                table += "<td>" + parts[0] + "</td>";
+                table += "<td>" + parts[1] + "</td>";
+                table += "</tr>";
+            }
+
+            table += "</table>";
+
+            document.getElementById("cookieTable").innerHTML = table;
+        }
+
+
+        function deleteCookie() {
+
+            let key = document.getElementById("deleteKey").value;
+
+            document.cookie =
+                key + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+
+            alert("Cookie deleted!");
+        }
+
+
+        function deleteAllCookies() {
+
+            let cookies = document.cookie.split(";");
+
+            for (let cookie of cookies) {
+
+                let key = cookie.split("=")[0].trim();
+
+                document.cookie =
+                    key + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+            }
+
+            alert("All cookies deleted!");
+
+            document.getElementById("cookieTable").innerHTML = "";
+        }
+
+    </script>
+
+</body>
+</html>

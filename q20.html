@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Difference</title>
+</head>
+<body>
+
+<script>
+function timeDifference(date1, date2) {
+    let d1 = new Date(date1);
+    let d2 = new Date(date2);
+
+    let difference = Math.abs(d2 - d1);
+
+    let days = difference / (1000 * 60 * 60 * 24);
+
+    return days;
+}
+
+let date1 = prompt("Enter first date and time (YYYY-MM-DD HH:MM):");
+let date2 = prompt("Enter second date and time (YYYY-MM-DD HH:MM):");
+
+let result = timeDifference(date1, date2);
+
+document.write("Time difference: " + result.toFixed(2) + " days");
+</script>
+
+</body>
+</html>

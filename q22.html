@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Blank String</title>
+</head>
+<body>
+
+<script>
+function isBlank(str) {
+    return str.trim() === "";
+}
+
+let text = prompt("Enter a string:");
+
+if (isBlank(text)) {
+    document.write("The string is blank.");
+}
+else {
+    document.write("The string is not blank.");
+}
+</script>
+
+</body>
+</html>

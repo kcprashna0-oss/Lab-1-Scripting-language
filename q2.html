@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alphabetical Order</title>
+</head>
+<body>
+
+<script>
+function alphabeticalOrder(str) {
+    return str.split('').sort().join('');
+}
+
+let text = prompt("Enter a string:");
+let result = alphabeticalOrder(text);
+
+document.write("Original String: " + text + "<br>");
+document.write("Alphabetical Order: " + result);
+</script>
+
+</body>
+</html>

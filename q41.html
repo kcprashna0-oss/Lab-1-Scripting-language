@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clone Table Row</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 70%;
+            border-collapse: collapse;
+            margin: 30px auto 10px;
+        }
+
+        th {
+            background-color: black;
+            color: white;
+            padding: 8px;
+            text-align: left;
+        }
+
+        td {
+            padding: 5px;
+        }
+
+        select, input {
+            width: 95%;
+            height: 28px;
+            box-sizing: border-box;
+        }
+
+        .delete {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            cursor: pointer;
+        }
+
+        .add {
+            background-color: #19c9e8;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            margin-left: 15%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="productTable">
+
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="tableBody">
+
+            <tr>
+                <td>1</td>
+
+                <td>
+                    <select>
+                        <option>Select Product</option>
+                        <option>Laptop</option>
+                        <option>Mobile</option>
+                        <option>Keyboard</option>
+                        <option>Mouse</option>
+                    </select>
+                </td>
+
+                <td>
+                    <input type="text">
+                </td>
+
+                <td>
+                    <button class="delete" onclick="removeRow(this)">  </button>
+                </td>
+            </tr>
+
+        </tbody>
+   
+    </table>
+
+    <button class="add" onclick="addRow()">Add New</button>
+
+
+    <script>
+
+        function addRow() {
+
+            let tableBody = document.getElementById("tableBody");
+
+            let rows = tableBody.getElementsByTagName("tr");
+
+            let newRow = rows[0].cloneNode(true);
+
+            let number = rows.length + 1;
+
+            newRow.cells[0].innerHTML = number;
+
+            newRow.querySelector("select").selectedIndex = 0;
+
+            newRow.querySelector("input").value = "";
+
+            tableBody.appendChild(newRow);
+        }
+
+
+        function removeRow(button) {
+
+            let tableBody = document.getElementById("tableBody");
+
+            let rows = tableBody.getElementsByTagName("tr");
+
+            if (rows.length > 1) {
+
+                button.parentElement.parentElement.remove();
+
+                updateNumbers();
+
+            } else {
+
+                alert("At least one row must remain.");
+
+            }
+        }
+
+
+        function updateNumbers() {
+
+            let rows = document
+                .getElementById("tableBody")
+                .getElementsByTagName("tr");
+
+            for (let i = 0; i < rows.length; i++) {
+
+                rows[i].cells[0].innerHTML = i + 1;
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>

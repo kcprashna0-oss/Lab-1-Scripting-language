@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reverse a Number</title>
+</head>
+<body>
+
+<script>
+function reverseNumber(num) {
+    return Number(num.toString().split('').reverse().join(''));
+}
+
+let number = prompt("Enter a number:");
+let result = reverseNumber(number);
+
+document.write("Original Number: " + number + "<br>");
+document.write("Reversed Number: " + result);
+</script>
+
+</body>
+</html>

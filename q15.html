@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Colors</title>
+</head>
+<body>
+
+<script>
+let color = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
+let o = ["th", "st", "nd", "rd"];
+
+for (let i = 0; i < color.length; i++) {
+    let number = i + 1;
+    let suffix = "th";
+
+    if (number == 1) {
+        suffix = "st";
+    }
+    else if (number == 2) {
+        suffix = "nd";
+    }
+    else if (number == 3) {
+        suffix = "rd";
+    }
+
+    document.write(number + suffix + " choice is " + color[i] + ".<br>");
+}
+</script>
+
+</body>
+</html>

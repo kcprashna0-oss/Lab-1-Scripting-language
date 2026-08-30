@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        form {
+            width: 450px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        .gender {
+            width: auto;  
+        }
+
+        .error {
+            color: red;
+            font-size: 13px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            background-color: #008cba;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<form onsubmit="return validateForm()">
+
+    <h2>Registration Form</h2>
+
+    <label>Name:</label>
+    <input type="text" id="name">
+    <span id="nameError" class="error"></span>
+
+    <label>Address:</label>
+    <input type="text" id="address">
+    <span id="addressError" class="error"></span>
+
+    <label>Username:</label>
+    <input type="text" id="username">
+    <span id="usernameError" class="error"></span>
+
+    <label>Email:</label>
+    <input type="text" id="email">
+    <span id="emailError" class="error"></span>
+
+    <label>Password:</label>
+    <input type="password" id="password">
+    <span id="passwordError" class="error"></span>
+
+    <label>Website:</label>
+    <input type="text" id="website">
+    <span id="websiteError" class="error"></span>
+
+    <label>Phone:</label>
+    <input type="text" id="phone">
+    <span id="phoneError" class="error"></span>
+
+    <label>Gender:</label>
+    <input type="radio" name="gender" value="Male" class="gender"> Male
+    <input type="radio" name="gender" value="Female" class   ="gender"> Female
+    <span id="genderError" class="error"></span>
+
+    <label>Course:</label>
+    <select id="course">
+        <option value="">Select Course</option>
+        <option value="BCA">BCA</option>
+        <option value="BBS">BBS</option>
+        <option value="BIT">BIT</option>
+        <option value="BIM">BIM</option>
+    </select>
+    <span id="courseError" class="error"></span>
+
+    <br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<script>
+function validateForm() {
+    let name = document.getElementById("name").value.trim();
+    let address = document.getElementById("address").value.trim();
+    let username = document.getElementById("username").value;
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value;
+    let website = document.getElementById("website").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let course = document.getElementById("course").value;
+
+    let valid = true;
+
+    document.querySelectorAll(".error").forEach(function(e) {
+        e.innerHTML = "";
+    });
+
+    let namePattern = /^[A-Za-z ]+$/;
+
+    if (name === "") {
+        document.getElementById("nameError").innerHTML =
+            "Name cannot be empty";
+        valid = false;
+    } else if (!namePattern.test(name)) {
+        document.getElementById("nameError").innerHTML =
+            "Name must contain only letters";
+        valid = false;
+    }
+
+    let usernamePattern = /^[A-Za-z0-9_]+$/;
+
+    if (username === "") {
+        document.getElementById("usernameError").innerHTML =
+            "Username cannot be empty";
+        valid = false;
+    } else if (!usernamePattern.test(username)) {
+        document.getElementById("usernameError").innerHTML =
+            "Invalid username";
+        valid = false;
+    }
+
+    let phonePattern = /^(98|97|96)[0-9]{8}$/;
+
+    if (phone === "") {
+        document.getElementById("phoneError").innerHTML =
+            "Phone cannot be empty";
+        valid = false;
+    } else if (!phonePattern.test(phone)) {
+        document.getElementById("phoneError").innerHTML =
+            "Invalid phone number";
+        valid = false;
+    }
+
+    let gender = document.querySelector(
+        'input[name="gender"]:checked'
+    );
+
+    if (!gender) {
+        document.getElementById("genderError").innerHTML =
+            "Please select gender";
+        valid = false;
+    }
+
+    if (address === "") {
+        document.getElementById("addressError").innerHTML =
+            "Address cannot be empty";
+        valid = false;
+    }
+
+    if (email === "") {
+        document.getElementById("emailError").innerHTML =
+            "Email cannot be empty";
+        valid = false;
+    } else if (!email.includes("@")) {
+        document.getElementById("emailError").innerHTML =
+            "Invalid email";
+        valid = false;
+    }
+
+    let passwordPattern =
+        /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9]).{8,}$/;
+
+    if (password === "") {
+        document.getElementById("passwordError").innerHTML =
+            "Password cannot be empty";
+        valid = false;
+    } else if (!passwordPattern.test(password)) {
+        document.getElementById("passwordError").innerHTML =
+            "Invalid password";
+        valid = false;
+    }
+
+    if (course === "") {
+        document.getElementById("courseError").innerHTML =
+            "Please select a course";
+        valid = false;
+    }
+
+    if (website === "") {
+        document.getElementById("websiteError").innerHTML =
+            "Website cannot be empty";
+        valid = false;
+    }
+
+    if (valid) {
+        alert("Form submitted successfully!");
+    }
+
+    return valid;
+}
+</script>
+
+</body>
+</html>

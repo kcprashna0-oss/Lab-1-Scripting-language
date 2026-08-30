@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Numbers 0 to 100</title>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script>
+let container = document.getElementById("container");
+
+for (let i = 0; i <= 100; i++) {
+
+    let number = document.createElement("span");
+    number.textContent = i;
+    number.style.display = "inline-block";
+    number.style.padding = "15px";
+    number.style.margin = "5px";
+    number.style.border = "1px solid black";
+
+    let isPrime = true;
+
+    if (i < 2) {
+        isPrime = false;
+    }
+
+    for (let j = 2; j < i; j++) {
+        if (i % j === 0) {
+            isPrime = false;
+            break;
+        }
+    }
+
+    if (isPrime) {
+        number.style.backgroundColor = "red";
+    }
+    else if (i % 2 === 0) {
+        number.style.backgroundColor = "green";
+    }
+    else {
+        number.style.backgroundColor = "yellow";
+    }
+
+    container.appendChild(number);
+}
+</script>
+
+</body>
+</html>

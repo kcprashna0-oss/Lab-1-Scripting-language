@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weekend Date</title>
+</head>
+<body>
+
+<script>
+function getWeekendDate() {
+    let today = new Date();
+
+    let day = today.getDay();
+
+    let daysUntilSaturday = 6 - day;
+
+    let saturday = new Date(today);
+
+    saturday.setDate(today.getDate() + daysUntilSaturday);
+
+    return saturday.toDateString();
+}
+
+document.write("Weekend date: " + getWeekendDate());
+</script>
+
+</body>
+</html>
